@@ -1,0 +1,113 @@
+        -:    0:Source:C:/Users/ekenn/CLionProjects/asn2/main.c
+        -:    0:Graph:C:\Users\ekenn\CLionProjects\asn2\cmake-build-debug-coverage\CMakeFiles\asn2.dir\main.c.gcno
+        -:    0:Data:C:\Users\ekenn\CLionProjects\asn2\cmake-build-debug-coverage\CMakeFiles\asn2.dir\main.c.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* CS 2211a */
+        -:    2:/* Assignment 02 */
+        -:    3:/* Elijah Kennie */
+        -:    4:/* 251163208 */
+        -:    5:/* ekennie */
+        -:    6:/* October 6th, 2021 */
+        -:    7:
+        -:    8:// preprocessor directives
+        -:    9:#include <stdio.h>
+        -:   10:#include <time.h>
+        -:   11:#include <stdlib.h>
+        -:   12:#include <math.h>
+        -:   13:#define ITERATIONS 2 // ITERATIONS is the number of iterations the program will go through
+        -:   14:
+        -:   15:// this function will calculate a random size for an array between 50 and 50*n iterations
+        -:   16:
+        -:   17:// this function will find the power of 2 integers (the base and exponent)
+        -:   18:/*int power(int base, int exponent)
+        -:   19:{
+        -:   20:    int result; //
+        -:   21:    for (exponent; exponent>0; exponent--)
+        -:   22:    {
+        -:   23:        result = result * base;
+        -:   24:    }
+        -:   25:    return result;
+        -:   26:}*/
+        -:   27:
+        -:   28:// this function will add a random number beneath the maximum value to the array
+        -:   29:/*int populateArray(int i) {
+        -:   30:    int exponent = ITERATIONS - i; // the exponent will be ITERATIONS - i because the max gets smaller every iteration
+        -:   31:    int maxVal = power(10, exponent) + 1; // the maximum value that we want of the range (add 1 because we want to include the base 10 number in range)
+        -:   32:
+        -:   33:    int randNum = rand() % maxVal; // our random number is in the range from 0 - the maxVal, this will be added to the array
+        -:   34:
+        -:   35:    return randNum;
+        -:   36:}*/
+        -:   37:
+        -:   38:// main function
+function main called 1 returned 100% blocks executed 100%
+        1:   39:int main() {
+        1:   40:    srand(time(NULL)); // initialization of random number generator
+        1:   40-block  0
+call    0 returned 1
+call    1 returned 1
+        -:   41:
+        1:   42:    int size = (rand() % ((50 * ITERATIONS) - 50)) +50; // the size of the array we will be working with
+call    0 returned 1
+        1:   43:    int array [size]; // the actual array that will be manipulated to our specifications
+        -:   44:
+        -:   45:    // a for loop that will repeat until the number of iterations is reached
+        3:   46:    for(int i = 1; i <= ITERATIONS; i++) {
+        2:   46-block  0
+        3:   46-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        -:   47:
+        -:   48:        // populating the array
+      154:   49:        for(int j = 0; j <= size; j++) { // add a random number to each index of the array
+        2:   49-block  0
+      154:   49-block  1
+branch  0 taken 152
+branch  1 taken 2 (fallthrough)
+        -:   50:
+      152:   51:            double exponent = ITERATIONS - i; // the exponent will be ITERATIONS - i because the max gets smaller every iteration
+      152:   52:            int maxVal = pow(10.0, exponent) + 1; // the maximum value that we want of the range (add 1 because we want to include the base 10 number in range)
+      152:   53:            int randNum = rand() % maxVal; // our random number is in the range from 0 - the maxVal, this will be added to the array
+      152:   53-block  0
+call    0 returned 152
+        -:   54:
+      152:   55:            array[j] = randNum;
+        -:   56:        }
+        -:   57:
+        -:   58:        // finding and replacing any duplicates
+      154:   59:        for(int k = 0; k <= size; k++) {
+        2:   59-block  0
+      152:   59-block  1
+      154:   59-block  2
+branch  0 taken 152
+branch  1 taken 2 (fallthrough)
+        -:   60:
+     6004:   61:                for(int l = k; l <= size; l++) {
+      152:   61-block  0
+     5852:   61-block  1
+     6004:   61-block  2
+branch  0 taken 5852
+branch  1 taken 152 (fallthrough)
+     5852:   62:                    if(array[k] == array[l]) {
+     5852:   62-block  0
+branch  0 taken 1621 (fallthrough)
+branch  1 taken 4231
+     1621:   63:                        array[l] = 0;
+     1621:   63-block  0
+        -:   64:                    }
+        -:   65:                }
+        -:   66:        }
+        -:   67:    }
+       77:   68:    for (int i = 0; i <= size; i++) {
+        1:   68-block  0
+       77:   68-block  1
+branch  0 taken 76
+branch  1 taken 1 (fallthrough)
+       76:   69:        printf("%d ", array[i]);
+       76:   69-block  0
+call    0 returned 76
+        -:   70:    }
+        1:   71:    return 0;
+        1:   71-block  0
+        -:   72:}
